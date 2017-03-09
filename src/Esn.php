@@ -91,16 +91,37 @@ class Esn
 		return $format;
 	}
 
+	/**
+	 * Returns ESN in Hex format
+	 * @return string
+	 */
 	public function getHex()
 	{
 		return $this->hex_format;
 	}
 
+	/**
+	 * Returns ESN in Dec format
+	 * @return string
+	 */
 	public function getDec()
 	{
 		return $this->dec_format;
 	}
 
+	/**
+	 * Returns the format of the ESN as submitted
+	 * @return string
+	 */
+	public function getSubmittedFormat()
+	{
+		return $this->submitted_format;
+	}
+
+	/**
+	 * Returns if the submitted ESN was a valid format
+	 * @return bool
+	 */
 	public function isValidFormat()
 	{
 		$formats = array(
@@ -175,6 +196,10 @@ class Esn
 		return array('ESN8HEX', 'MEIN14HEX');
 	}
 
+	/**
+	 * Returns an array of Dec formats
+	 * @return array
+	 */
 	protected function setDecFormats()
 	{
 		return array('ESN11DEC', 'MEIN18DEC');
