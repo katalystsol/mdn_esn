@@ -69,6 +69,18 @@ class Mdn
 	}
 
 	/**
+	 * Allows override of minimum mdn length
+	 *
+	 * @param int $minimum_length
+	 */
+	public function setMinimumMdnLength($minimum_length)
+	{
+		if (!empty($minimum_length) && is_int($minimum_length)) {
+			$this->minimum_mdn_length = $minimum_length;
+		}
+	}
+
+	/**
 	 * Sets the mdn_length property
 	 *
 	 * @param int $length
