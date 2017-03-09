@@ -1,5 +1,5 @@
 {
-    "name": "Katalyst/MdnEsn",
+    "name": "katalyst/mdn-esn",
     "description": "Classes for formatting and converting Mobile Device Numbers (MDN) and Electronic Serial Numbers (ESN)",
     "keywords": [
         "katalyst",
