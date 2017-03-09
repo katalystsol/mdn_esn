@@ -5,7 +5,7 @@ used to validate the numbers and convert ESNs to different formats.
 
 ## Install
 
-Via Composer
+Via Composer (not yet implemented)
 
 ``` bash
 $ composer require katalyst/mdn_esn
