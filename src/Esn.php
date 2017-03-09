@@ -21,6 +21,14 @@ class Esn
 	/** @var string The submitted ESN */
 	protected $submitted_esn;
 
+	/** @var array Valid formats. Key is the format length */
+	protected $formats = array(
+		8 => array('format' => 'ESN8HEX', 'type' => 'HEX'),
+		11 => array('format' => 'ESN11DEC', 'type' => 'DEC'),
+		14 => array('format' => 'MEIN14HEX', 'type' => 'HEX'),
+		18 => array('format' => 'MEIN18DEC', 'type' => 'DEC'),
+	);
+
 	/** @var string The DEC format of the ESN */
 	protected $dec_format;
 
@@ -63,28 +71,18 @@ class Esn
 		$esn	= $this->submitted_esn;
 		$len	= strlen($esn);
 
-		$valid_lengths = array('8', '11', '14', '18');
+		$valid_lengths = array_keys($this->formats);
 
 		// If invalid length, return empty
 		if (!in_array($len, $valid_lengths)) {
 			return '';
 		}
 
-		$formats = array(
-			'8'		=> 'ESN8HEX',
-			'11'	=> 'ESN11DEC',
-			'14'	=> 'MEIN14HEX',
-			'18'	=> 'MEIN18DEC',
-		);
-
-		$hexformats = $this->hexFormats;
-		$decformats	= $this->decFormats;
-
-		$format	= isset($formats[$len]) ? $formats[$len] : '';
+		$format	= isset($this->formats[$len]['format']) ? $this->formats[$len]['format'] : '';
 
 		// Validate that hex is hex and dec is dec
-		if ((in_array($format, $hexformats) && !ctype_xdigit($esn)) ||
-			(in_array($format, $decformats) && !ctype_digit($esn))) {
+		if ((in_array($format, $this->hexFormats) && !ctype_xdigit($esn)) ||
+			(in_array($format, $this->decFormats) && !ctype_digit($esn))) {
 			return '';
 		}
 
@@ -124,14 +122,7 @@ class Esn
 	 */
 	public function isValidFormat()
 	{
-		$formats = array(
-			'ESN8HEX',
-			'ESN11DEC',
-			'MEIN14HEX',
-			'MEIN18DEC',
-		);
-
-		if(in_array($this->submitted_format, $formats)) {
+		if(in_array($this->submitted_format, $this->allFormats())) {
 			return true;
 		}
 
@@ -193,7 +184,15 @@ class Esn
 	 */
 	protected function setHexFormats()
 	{
-		return array('ESN8HEX', 'MEIN14HEX');
+		$formats = array();
+
+		foreach ($this->formats as $key => $value) {
+			if ($value['type'] == 'HEX') {
+				$formats[] = $value['format'];
+			}
+		}
+
+		return $formats;
 	}
 
 	/**
@@ -202,7 +201,30 @@ class Esn
 	 */
 	protected function setDecFormats()
 	{
-		return array('ESN11DEC', 'MEIN18DEC');
+		$formats = array();
+
+		foreach ($this->formats as $key => $value) {
+			if ($value['type'] == 'DEC') {
+				$formats[] = $value['format'];
+			}
+		}
+
+		return $formats;
+	}
+
+	/**
+	 * Returns an array of all formats
+	 * @return array
+	 */
+	protected function allFormats()
+	{
+		$formats = array();
+
+		foreach ($this->formats as $key => $value) {
+			$formats[] = $value['format'];
+		}
+
+		return $formats;
 	}
 
 }
