@@ -4,7 +4,8 @@
     "keywords": [
         "katalyst",
         "mdn",
-        "esn"
+        "esn",
+        "meid"
     ],
     "homepage": "https://github.com/katalystsol/mdn_esn",
     "license": "MIT",
