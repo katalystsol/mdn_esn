@@ -5,10 +5,10 @@ used to validate the numbers and convert ESNs to different formats.
 
 ## Install
 
-Via Composer (not yet implemented)
+Via Composer
 
 ``` bash
-$ composer require katalyst/mdn_esn
+$ composer require katalyst/mdn-esn
 ```
 
 ## Usage
