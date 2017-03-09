@@ -1,17 +1,18 @@
 {
-    "name": "league/:package_name",
-    "description": ":package_description",
+    "name": "Katalyst/MdnEsn",
+    "description": "Classes for formatting and converting Mobile Device Numbers (MDN) and Electronic Serial Numbers (ESN)",
     "keywords": [
-        "league",
-        "package"
+        "katalyst",
+        "mdn",
+        "esn"
     ],
-    "homepage": "https://github.com/php-loep/:package_name",
+    "homepage": "https://github.com/katalystsol/mdn_esn",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author_email@example.com",
-            "homepage": "http://author-website.example.com",
+            "name": "Don Cranford",
+            "email": "dcranford@katalystsolutions.com.com",
+            "homepage": "https://www.katalystsolutions.com",
             "role": "Developer"
         }
     ],
@@ -23,12 +24,12 @@
     },
     "autoload": {
         "psr-4": {
-            "League\\Skeleton\\": "src"
+            "Katalyst\\MdnEsn\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "League\\Skeleton\\Test\\": "tests"
+            "Katalyst\\MdnEsn\\Test\\": "tests"
         }
     },
     "extra": {
