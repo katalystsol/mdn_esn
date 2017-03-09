@@ -9,7 +9,7 @@ namespace Katalyst\MdnEsn;
 /**
  * Class Esn
  *
- * This class handles Electronic Serial Numbers for CDMA devices
+ * This class handles Electronic Serial Numbers (ESN) or Mobile Equipment Identifier (MEID) for CDMA devices
  *
  * @package Katalyst\MdnEsn
  */
