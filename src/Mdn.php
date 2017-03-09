@@ -15,6 +15,9 @@ namespace Katalyst\MdnEsn;
  */
 class Mdn
 {
+	/** @var string The MDN with all non-numeric characters removed */
+	protected $formatted_mdn;
+
 	/** @var  string The submitted MDN */
 	protected $submitted_mdn;
 
