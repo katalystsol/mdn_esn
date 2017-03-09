@@ -6,7 +6,13 @@
 
 namespace Katalyst\MdnEsn;
 
-
+/**
+ * Class Esn
+ *
+ * This class handles Electronic Serial Numbers for CDMA devices
+ *
+ * @package Katalyst\MdnEsn
+ */
 class Esn
 {
 	/** @var string The format of the submitted ESN */
@@ -116,14 +122,13 @@ class Esn
 	 * NOT CURRENTLY IMPLEMENTED
 	 *
 	 * @return string
-	 * @TODO Complete this method when needed
+	 * @TODO Complete this method
 	 */
 	protected function calcHexFormat()
 	{
 		$hex = (in_array($this->submitted_format, $this->hexFormats)) ? $this->submitted_esn : '';
 
-		if(in_array($this->submitted_format, $this->decFormats))
-		{
+		if(in_array($this->submitted_format, $this->decFormats)) {
 			/*
 						$full_len	= strlen($esn);
 						$a_len		= ($full_len == 11) ? 2 : 8;
@@ -156,13 +161,15 @@ class Esn
 			$a			= str_pad(hexdec(substr($esn,0,$a_len)),10,'0',STR_PAD_LEFT);
 			$b			= str_pad((string)hexdec(substr($esn,$a_len,$b_len)),8,'0',STR_PAD_LEFT);
 			$dec		= $a.$b;
-
-//			echo $a.'('.strlen($a).')<br>'.$b.'('.strlen($b).')';die;
 		}
 
 		return $dec;
 	}
 
+	/**
+	 * Return an array of Hex formats
+	 * @return array
+	 */
 	protected function setHexFormats()
 	{
 		return array('ESN8HEX', 'MEIN14HEX');
