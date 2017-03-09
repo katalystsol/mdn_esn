@@ -14,7 +14,11 @@ $ composer require katalyst/mdn_esn
 ## Usage
 
 ``` php
-$mdn = new Katalyst\MdnEsn\Mdn();
+$mdn = new Katalyst\MdnEsn\Mdn($mobile_number, $mdn_length);
+$validMdn = $mdn->isValid();
+
+$esn = new Katalyst\MdnEsn\Esn($esn);
+$validEsn = $esn->isValidFormat();
 ...
 ```
 
