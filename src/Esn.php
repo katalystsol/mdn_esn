@@ -138,7 +138,9 @@ class Esn
 	 */
 	protected function calcHexFormat()
 	{
-		$hex = (in_array($this->submitted_format, $this->hexFormats)) ? $this->submitted_esn : '';
+		if (in_array($this->submitted_format, $this->hexFormats)) {
+			return $this->submitted_esn;
+		}
 
 		if(in_array($this->submitted_format, $this->decFormats)) {
 			/*
@@ -147,11 +149,11 @@ class Esn
 						$b_len		= 6;
 						$a			= hexdec(substr($esn,0,$a_len));
 						$b			= hexdec(substr($esn,$a_len,$b_len));
-						$dec		= $a.$b;
+						$hex		= $a.$b;
 			*/
 		}
 
-		return $hex;
+		return !empty($hex) ? $hex : '';
 	}
 
 	/**
@@ -161,12 +163,13 @@ class Esn
 	 */
 	protected function calcDecFormat()
 	{
-		$esn = $this->submitted_esn;
-
 		// If it is already in DEC format, leave it as is
-		$dec = (in_array($this->submitted_format, $this->decFormats)) ? $esn : '';
+		if (in_array($this->submitted_format, $this->decFormats)) {
+			return $this->submitted_esn;
+		}
 
 		if(in_array($this->submitted_format, $this->hexFormats)) {
+			$esn        = $this->submitted_esn;
 			$full_len	= strlen($esn);
 			$a_len		= ($full_len == 11) ? 2 : 8;
 			$b_len		= 6;
@@ -175,7 +178,7 @@ class Esn
 			$dec		= $a.$b;
 		}
 
-		return $dec;
+		return !empty($dec) ? $dec : '';
 	}
 
 	/**
