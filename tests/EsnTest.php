@@ -73,11 +73,21 @@ class EsnTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals($meid_number, $esn->getHex());
 	}
 
-	/** @future */
-	public function returns_proper_hex_format_when_submitted_in_dec()
+	/** @test */
+	public function returns_proper_hex_format_when_submitted_in_18_digit_dec()
 	{
 		$meid_number = '268435456010201020';
 		$hex_format = 'A00000009BA7BC';
+		$esn = new Esn($meid_number);
+
+		$this->assertEquals($hex_format, $esn->getHex());
+	}
+
+	/** @test */
+	public function returns_proper_hex_format_when_submitted_in_11_digit_dec()
+	{
+		$meid_number = '24110201020';
+		$hex_format = 'F19BA7BC';
 		$esn = new Esn($meid_number);
 
 		$this->assertEquals($hex_format, $esn->getHex());
