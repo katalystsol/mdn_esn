@@ -131,10 +131,8 @@ class Esn
 
 	/**
 	 * Calculate and return the Hex format for the submitted ESN
-	 * NOT CURRENTLY IMPLEMENTED
 	 *
 	 * @return string
-	 * @TODO Complete this method
 	 */
 	protected function calcHexFormat()
 	{
@@ -143,14 +141,13 @@ class Esn
 		}
 
 		if(in_array($this->submitted_format, $this->decFormats)) {
-			/*
-						$full_len	= strlen($esn);
-						$a_len		= ($full_len == 11) ? 2 : 8;
-						$b_len		= 6;
-						$a			= hexdec(substr($esn,0,$a_len));
-						$b			= hexdec(substr($esn,$a_len,$b_len));
-						$hex		= $a.$b;
-			*/
+			$esn = $this->submitted_esn;
+			$full_len	= strlen($esn);
+			$a_len		= ($full_len == 18) ? 10 : 3;
+			$b_len		= 8;
+			$a			= dechex(substr($esn,0,$a_len));
+			$b			= dechex(substr($esn,$a_len,$b_len));
+			$hex		= strtoupper($a.$b);
 		}
 
 		return !empty($hex) ? $hex : '';
